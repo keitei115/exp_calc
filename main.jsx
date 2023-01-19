@@ -1,86 +1,125 @@
 function App() {
-    const [podate, setPodate] = React.useState([50, 10, 10, 100, 100, 100, "true", 10, 10, 100, 100, 100, 0]);
+    //const [podate, setPodate] = React.useState([50, 10, 10, 100, 100, 100, "true", 10, 10, 100, 100, 100, 0]);
+    const [podate, setPodate] = React.useState({
+        frontLV: 1,
+        rearLV: 50,
+        enterFrontLV: 1,
+        enterRearLV: 50,
+
+        enteredXL: 10,
+        enteredL: 10,
+        enteredM: 10,
+        enteredS: 10,
+        enteredXS: 10,
+
+        requierdXL: 10,
+        requierdL: 10,
+        requierdM: 10,
+        requierdS: 10,
+        requierdXS: 10,
+
+        excessEXP: 0,
+
+        result: "true"
+    });
 
     const xlCanChange = function(e) {
         console.log(e.target.value);
         var target = e.target.value;
         target = target > 999 ? 999 : target;
-        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][podate[0]];
+        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][podate.rearLV];
         console.log(requiredEXP);
-        var tmp = calcRequirdCandy(podate[0], target, podate[2], podate[3], podate[4], podate[5]);
+        var tmp = calcRequirdCandy(requiredEXP, target, podate.enteredL, podate.enteredM, podate.enteredS, podate.enteredXS);
         tmp[0] = tmp[0] ? "true" : "false";
-        setPodate([podate[0], target, podate[2], podate[3], podate[4], podate[5], tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6]]);
+        setPodate(state => ({ ...state, enteredXL: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6]}));
+        console.log(podate);
     }
 
     const lCanChange = function(e) {
         console.log(e.target.value);
         var target = e.target.value;
         target = target > 999 ? 999 : target;
-        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][podate[0]];
+        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][podate.rearLV];
         console.log(requiredEXP);
-        var tmp = calcRequirdCandy(podate[0], podate[1], target, podate[3], podate[4], podate[5]);
+        var tmp = calcRequirdCandy(requiredEXP, podate.enteredXL, target, podate.enteredM, podate.enteredS, podate.enteredXS);
         tmp[0] = tmp[0] ? "true" : "false";
-        setPodate([podate[0], podate[1], target, podate[3], podate[4], podate[5], tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6]]);
+        setPodate(state => ({ ...state, enteredL: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6]}));
+        console.log(podate);
     }
 
     const mCanChange = function(e) {
         console.log(e.target.value);
         var target = e.target.value;
         target = target > 999 ? 999 : target;
-        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][podate[0]];
+        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][podate.rearLV];
         console.log(requiredEXP);
-        var tmp = calcRequirdCandy(podate[0], podate[1], podate[2], target, podate[4], podate[5]);
+        var tmp = calcRequirdCandy(requiredEXP, podate.enteredXL, podate.enteredL, target, podate.enteredS, podate.enteredXS);
         tmp[0] = tmp[0] ? "true" : "false";
-        setPodate([podate[0], podate[1], podate[2], target, podate[4], podate[5], tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6]]);
+        setPodate(state => ({ ...state, enteredM: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6]}));
+        console.log(podate);
     }
 
     const sCanChange = function(e) {
         console.log(e.target.value);
         var target = e.target.value;
         target = target > 999 ? 999 : target;
-        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][podate[0]];
+        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][podate.rearLV];
         console.log(requiredEXP);
-        var tmp = calcRequirdCandy(podate[0], podate[1], podate[2], podate[3], target, podate[5]);
+        var tmp = calcRequirdCandy(requiredEXP, podate.enteredXL, podate.enteredL, podate.enteredM, target, podate.enteredXS);
         tmp[0] = tmp[0] ? "true" : "false";
-        setPodate([podate[0], podate[1], podate[2], podate[3], target, podate[5], tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6]]);
+        setPodate(state => ({ ...state, enteredS: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6]}));
+        console.log(podate);
     }
 
     const xsCanChange = function(e) {
         console.log(e.target.value);
         var target = e.target.value;
         target = target > 999 ? 999 : target;
-        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][podate[0]];
+        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][podate.rearLV];
         console.log(requiredEXP);
-        var tmp = calcRequirdCandy(podate[0], podate[1], podate[2], podate[3], podate[4], target);
+        var tmp = calcRequirdCandy(requiredEXP, podate.enteredXL, podate.enteredL, podate.enteredM, podate.enteredS, podate.enteredXS);
         tmp[0] = tmp[0] ? "true" : "false";
-        setPodate([podate[0], podate[1], podate[2], podate[3], podate[4], target, tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6]]);
+        setPodate(state => ({ ...state, enteredXS: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6]}));
+        console.log(podate);
     }
 
-    const pokemonChange = function(e) {
+    const frontLVChange = function(e) {
         console.log(e.target.value);
-        console.log(TYPE100[1]);
         var target = e.target.value;
         target = target > 100 ? 100 : target;
-        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][target];
+        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][podate.rearLV] - POKEMON_EXPTYPE["ニャオハ"][target];
         console.log(requiredEXP);
-        var tmp = calcRequirdCandy(requiredEXP, podate[1], podate[2], podate[3], podate[4], podate[5]);
+        var tmp = calcRequirdCandy(requiredEXP, podate.enteredXL, podate.enteredL, podate.enteredM, podate.enteredS, podate.enteredXS);
         tmp[0] = tmp[0] ? "true" : "false";
-        setPodate([target, podate[1], podate[2], podate[3], podate[4], podate[5], tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6]]);
+        setPodate(state => ({ ...state, startLV: target, enterFrontLV: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6]}));
+        console.log(podate);
+    }
+
+    const rearLVChange = function(e) {
+        console.log(e.target.value);
+        var target = e.target.value;
+        target = target > 100 ? 100 : target;
+        var requiredEXP = POKEMON_EXPTYPE["ニャオハ"][target] - POKEMON_EXPTYPE["ニャオハ"][podate.frontLV];
+        console.log(requiredEXP);
+        var tmp = calcRequirdCandy(requiredEXP, podate.enteredXL, podate.enteredL, podate.enteredM, podate.enteredS, podate.enteredXS);
+        tmp[0] = tmp[0] ? "true" : "false";
+        setPodate(state => ({ ...state, rearLV: target, enterRearLV: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6]}));
+        console.log(podate);
     }
 
     return (
         <div>
-            <h1>{podate[6]}, {podate[12]}</h1>
-            start<input value={podate[0]} onChange={pokemonChange}/><br></br>
-            xl<input value={podate[1]} onChange={xlCanChange}/><br></br>
-            l<input value={podate[2]} onChange={lCanChange}/><br></br>
-            m<input value={podate[3]} onChange={mCanChange}/><br></br>
-            s<input value={podate[4]} onChange={sCanChange}/><br></br>
-            xs<input value={podate[5]} onChange={xsCanChange}/><br></br>
+            <h1>{podate.result}, XL{podate.requierdXL}, L{podate.requierdL}, M{podate.requierdM}, S{podate.requierdS}, XS{podate.requierdXS}, 残り{podate.excessEXP}</h1>
+            start<input value={podate.enterFrontLV} onChange={frontLVChange}/><br></br>
+            end<input value={podate.enterRearLV} onChange={rearLVChange}/><br></br>
+            xl<input value={podate.enteredXL} onChange={xlCanChange}/><br></br>
+            l<input value={podate.enteredL} onChange={lCanChange}/><br></br>
+            m<input value={podate.enteredM} onChange={mCanChange}/><br></br>
+            s<input value={podate.enteredS} onChange={sCanChange}/><br></br>
+            xs<input value={podate.enteredXS} onChange={xsCanChange}/><br></br>
         </div>
     );
 }
-//end作らなケラバならぬ　end - start = 必要経験値
 const target = document.querySelector('#app');
 ReactDOM.render(<App />, target);
 
