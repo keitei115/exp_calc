@@ -22,7 +22,7 @@ function App() {
 
         excessEXP: 0,
 
-        result: "成功！"
+        result: "true"
     });
 
     const xlCanChange = function (e) {
@@ -37,12 +37,12 @@ function App() {
         var requiredEXP = POKEMON_EXPTYPE[podata.poName][podata.rearLv] - POKEMON_EXPTYPE[podata.poName][podata.frontLv];
         console.log(requiredEXP);
         if (requiredEXP < 0) {
-            setPodata(state => ({ ...state, enteredXL: target, result: "エラー", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
+            setPodata(state => ({ ...state, enteredXL: target, result: "error", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
             console.log(podata);
             return;
         }
         var tmp = calcRequirdCandy(requiredEXP, target, podata.enteredL, podata.enteredM, podata.enteredS, podata.enteredXS);
-        tmp[0] = tmp[0] ? "成功！" : "失敗…";
+        tmp[0] = tmp[0] ? "true" : "false";
         setPodata(state => ({ ...state, enteredXL: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6] }));
         console.log(podata);
     }
@@ -59,12 +59,12 @@ function App() {
         var requiredEXP = POKEMON_EXPTYPE[podata.poName][podata.rearLv] - POKEMON_EXPTYPE[podata.poName][podata.frontLv];
         console.log(requiredEXP);
         if (requiredEXP < 0) {
-            setPodata(state => ({ ...state, enteredL: target, result: "エラー", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
+            setPodata(state => ({ ...state, enteredL: target, result: "error", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
             console.log(podata);
             return;
         }
         var tmp = calcRequirdCandy(requiredEXP, podata.enteredXL, target, podata.enteredM, podata.enteredS, podata.enteredXS);
-        tmp[0] = tmp[0] ? "成功！" : "失敗…";
+        tmp[0] = tmp[0] ? "true" : "false";
         setPodata(state => ({ ...state, enteredL: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6] }));
         console.log(podata);
     }
@@ -81,12 +81,12 @@ function App() {
         var requiredEXP = POKEMON_EXPTYPE[podata.poName][podata.rearLv] - POKEMON_EXPTYPE[podata.poName][podata.frontLv];
         console.log(requiredEXP);
         if (requiredEXP < 0) {
-            setPodata(state => ({ ...state, enteredM: target, result: "エラー", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
+            setPodata(state => ({ ...state, enteredM: target, result: "error", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
             console.log(podata);
             return;
         }
         var tmp = calcRequirdCandy(requiredEXP, podata.enteredXL, podata.enteredL, target, podata.enteredS, podata.enteredXS);
-        tmp[0] = tmp[0] ? "成功！" : "失敗…";
+        tmp[0] = tmp[0] ? "true" : "false";
         setPodata(state => ({ ...state, enteredM: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6] }));
         console.log(podata);
     }
@@ -103,12 +103,12 @@ function App() {
         var requiredEXP = POKEMON_EXPTYPE[podata.poName][podata.rearLv] - POKEMON_EXPTYPE[podata.poName][podata.frontLv];
         console.log(requiredEXP);
         if (requiredEXP < 0) {
-            setPodata(state => ({ ...state, enteredS: target, result: "エラー", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
+            setPodata(state => ({ ...state, enteredS: target, result: "error", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
             console.log(podata);
             return;
         }
         var tmp = calcRequirdCandy(requiredEXP, podata.enteredXL, podata.enteredL, podata.enteredM, target, podata.enteredXS);
-        tmp[0] = tmp[0] ? "成功！" : "失敗…";
+        tmp[0] = tmp[0] ? "true" : "false";
         setPodata(state => ({ ...state, enteredS: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6] }));
         console.log(podata);
     }
@@ -125,12 +125,12 @@ function App() {
         var requiredEXP = POKEMON_EXPTYPE[podata.poName][podata.rearLv] - POKEMON_EXPTYPE[podata.poName][podata.frontLv];
         console.log(requiredEXP);
         if (requiredEXP < 0) {
-            setPodata(state => ({ ...state, enteredXS: target, result: "エラー", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
+            setPodata(state => ({ ...state, enteredXS: target, result: "error", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
             console.log(podata);
             return;
         }
         var tmp = calcRequirdCandy(requiredEXP, podata.enteredXL, podata.enteredL, podata.enteredM, podata.enteredS, podata.enteredXS);
-        tmp[0] = tmp[0] ? "成功！" : "失敗…";
+        tmp[0] = tmp[0] ? "true" : "false";
         setPodata(state => ({ ...state, enteredXS: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6] }));
         console.log(podata);
     }
@@ -148,12 +148,12 @@ function App() {
         console.log(requiredEXP);
         if (requiredEXP < 0) {
             console.log(target);
-            setPodata(state => ({ ...state, frontLv: target, enterFrontLv: target, result: "エラー", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
+            setPodata(state => ({ ...state, frontLv: target, enterFrontLv: target, result: "error", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
             console.log(podata);
             return;
         }
         var tmp = calcRequirdCandy(requiredEXP, podata.enteredXL, podata.enteredL, podata.enteredM, podata.enteredS, podata.enteredXS);
-        tmp[0] = tmp[0] ? "成功！" : "失敗…";
+        tmp[0] = tmp[0] ? "true" : "false";
         setPodata(state => ({ ...state, frontLv: target, enterFrontLv: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6] }));
         console.log(podata);
     }
@@ -170,12 +170,13 @@ function App() {
         var requiredEXP = POKEMON_EXPTYPE[podata.poName][target] - POKEMON_EXPTYPE[podata.poName][podata.frontLv];
         console.log(requiredEXP);
         if (requiredEXP < 0) {
-            setPodata(state => ({ ...state, rearLv: target, enterRearLv: target, result: "エラー", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
+            setPodata(state => ({ ...state, rearLv: target, enterRearLv: target, result: "error", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
             console.log(podata);
             return;
         }
         var tmp = calcRequirdCandy(requiredEXP, podata.enteredXL, podata.enteredL, podata.enteredM, podata.enteredS, podata.enteredXS);
-        tmp[0] = tmp[0] ? "成功！" : "失敗…";
+        tmp[0] = tmp[0] ? "true" : "false";
+        console.log(tmp[6]);
         setPodata(state => ({ ...state, rearLv: target, enterRearLv: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6] }));
         console.log(podata);
     }
@@ -201,19 +202,35 @@ function App() {
         var requiredEXP = POKEMON_EXPTYPE[target][podata.rearLv] - POKEMON_EXPTYPE[target][podata.frontLv];
         console.log(requiredEXP);
         if (requiredEXP < 0) {
-            setPodata(state => ({ ...state, result: "エラー", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
+            setPodata(state => ({ ...state, result: "error", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
             console.log(podata);
             return;
         }
         var tmp = calcRequirdCandy(requiredEXP, podata.enteredXL, podata.enteredL, podata.enteredM, podata.enteredS, podata.enteredXS);
-        tmp[0] = tmp[0] ? "成功！" : "失敗…";
+        tmp[0] = tmp[0] ? "true" : "false";
         setPodata(state => ({ ...state, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6] }));
         console.log(podata);
     }
 
+    function Result() {
+        console.log(podata.result);
+        if (podata.result == "true") {
+            return (
+            <h1>必要なアメの量 - XL:{podata.requierdXL}, L:{podata.requierdL}, M:{podata.requierdM}, S:{podata.requierdS}, XS:{podata.requierdXS}, あまり:{podata.excessEXP}</h1>
+            )
+        } else if (podata.result == "error") {
+            return (
+            <h1>エラーです！レベルを見直してください</h1>
+            )
+        }
+        return (
+            <h1>アメが足りません! 残り:{podata.excessEXP}</h1>
+        )
+    }
+
     return (
         <div>
-            <h1>{podata.result} XL:{podata.requierdXL}, L:{podata.requierdL}, M:{podata.requierdM}, S:{podata.requierdS}, XS:{podata.requierdXS}, 残り:{podata.excessEXP}</h1>
+            {Result()}
             名前<input value={podata.enteredPoName} onChange={poNameChange} /><br></br>
             start<input value={podata.enterFrontLv} onChange={frontLvChange} /><br></br>
             end<input value={podata.enterRearLv} onChange={rearLvChange} /><br></br>

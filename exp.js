@@ -40,7 +40,7 @@ let calcRequirdCandy = function (requiredEXP, xlLimit, lLimit, mLimit, sLimit, x
         console.log(xls + " " + ls + " " + ms + " " + ss + " " + xss);
         console.log(requiredEXP - xls * 30000 - ls * 10000 - ms * 3000 - ss * 800 - xss * 100);
         var remainingEXP = requiredEXP - xls * 30000 - ls * 10000 - ms * 3000 - ss * 800 - xss * 100 ;
-        return [false, 0, 0, 0, 0, 0, 0, remainingEXP];
+        return [false, 0, 0, 0, 0, 0, remainingEXP];
     } else {
         console.log("success!");
         console.log(xls + " " + ls + " " + ms + " " + ss + " " + xss);
