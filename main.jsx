@@ -216,7 +216,7 @@ function App() {
         console.log(podata.result);
         if (podata.result == "true") {
             return (
-                <h1>必要なアメの量 - XL:{podata.requierdXL}, L:{podata.requierdL}, M:{podata.requierdM}, S:{podata.requierdS}, XS:{podata.requierdXS}, 経験値のあまり:{podata.excessEXP}</h1>
+                <h1>必要なアメの量 - XL:{podata.requierdXL}, L:{podata.requierdL}, M:{podata.requierdM}, S:{podata.requierdS}, XS:{podata.requierdXS}, あまった経験値:{podata.excessEXP}</h1>
             )
         } else if (podata.result == "error") {
             return (
@@ -228,17 +228,30 @@ function App() {
         )
     }
 
+    function AutoComplete() {
+        const list = [];
+        for (const name of POKEMON_NAME) {
+            list.push(<option value={name}></option>);
+        }
+        return (
+            <datalist id="poNameLlist">
+                {list}
+            </datalist>
+        )
+    }
+
     return (
         <div>
             {Result()}
-            ポケモン<input value={podata.enteredPoName} onChange={poNameChange} /><br></br>
+            ポケモン<input value={podata.enteredPoName} onChange={poNameChange} autocomplete="on" list="poNameLlist" /><br></br>
+            {AutoComplete()}
             現在のレベル<input value={podata.enterFrontLv} onChange={frontLvChange} /><br></br>
             目標のレベル<input value={podata.enterRearLv} onChange={rearLvChange} /><br></br>
-            XL(30000)<input value={podata.enteredXL} onChange={xlCanChange} /><br></br>
-            L(10000)<input value={podata.enteredL} onChange={lCanChange} /><br></br>
-            M(3000)<input value={podata.enteredM} onChange={mCanChange} /><br></br>
-            S(800)<input value={podata.enteredS} onChange={sCanChange} /><br></br>
-            XS(100)<input value={podata.enteredXS} onChange={xsCanChange} /><br></br>
+            XL(30000×)<input value={podata.enteredXL} onChange={xlCanChange} /><br></br>
+            L(10000×)<input value={podata.enteredL} onChange={lCanChange} /><br></br>
+            M(3000×)<input value={podata.enteredM} onChange={mCanChange} /><br></br>
+            S(800×)<input value={podata.enteredS} onChange={sCanChange} /><br></br>
+            XS(100×)<input value={podata.enteredXS} onChange={xsCanChange} /><br></br>
         </div>
     );
 }
