@@ -29,22 +29,7 @@ function App() {
         console.log(e.target.value);
         var target = e.target.value;
         target = target > 999 ? 999 : target;
-        if (isNaN(target) || isNaN(podata.enteredL) || isNaN(podata.enteredM) || isNaN(podata.enteredS) || isNaN(podata.enteredXS) || isNaN(podata.enterFrontLv) || isNaN(podata.enterRearLv) || target < 0) {
-            setPodata(state => ({ ...state, enteredXL: target }));
-            console.log(podata);
-            return;
-        }
-        var requiredEXP = POKEMON_EXPTYPE[podata.poName][podata.rearLv] - POKEMON_EXPTYPE[podata.poName][podata.frontLv];
-        console.log(requiredEXP);
-        if (requiredEXP < 0) {
-            setPodata(state => ({ ...state, enteredXL: target, result: "error", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
-            console.log(podata);
-            return;
-        }
-        var tmp = calcRequirdCandy(requiredEXP, target, podata.enteredL, podata.enteredM, podata.enteredS, podata.enteredXS);
-        tmp[0] = tmp[0] ? "true" : "false";
-        setPodata(state => ({ ...state, enteredXL: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6] }));
-        console.log(podata);
+        numChange(target);
     }
 
     const lCanChange = function (e) {
@@ -209,6 +194,25 @@ function App() {
         var tmp = calcRequirdCandy(requiredEXP, podata.enteredXL, podata.enteredL, podata.enteredM, podata.enteredS, podata.enteredXS);
         tmp[0] = tmp[0] ? "true" : "false";
         setPodata(state => ({ ...state, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6] }));
+        console.log(podata);
+    }
+
+    const numChange = function (target) {
+        if (isNaN(target) || isNaN(podata.enteredL) || isNaN(podata.enteredM) || isNaN(podata.enteredS) || isNaN(podata.enteredXS) || isNaN(podata.enterFrontLv) || isNaN(podata.enterRearLv) || target < 0) {
+            setPodata(state => ({ ...state, enteredXL: target }));
+            console.log(podata);
+            return;
+        }
+        var requiredEXP = POKEMON_EXPTYPE[podata.poName][podata.rearLv] - POKEMON_EXPTYPE[podata.poName][podata.frontLv];
+        console.log(requiredEXP);
+        if (requiredEXP < 0) {
+            setPodata(state => ({ ...state, enteredXL: target, result: "error", requierdXL: 0, requierdL: 0, requierdM: 0, requierdS: 0, requierdXS: 0, excessEXP: 0 }));
+            console.log(podata);
+            return;
+        }
+        var tmp = calcRequirdCandy(requiredEXP, target, podata.enteredL, podata.enteredM, podata.enteredS, podata.enteredXS);
+        tmp[0] = tmp[0] ? "true" : "false";
+        setPodata(state => ({ ...state, enteredXL: target, result: tmp[0], requierdXL: tmp[1], requierdL: tmp[2], requierdM: tmp[3], requierdS: tmp[4], requierdXS: tmp[5], excessEXP: tmp[6] }));
         console.log(podata);
     }
 
